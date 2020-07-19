@@ -63,7 +63,7 @@ variable "oms_agent_enabled" {
   description = "This is to enable oms agent on AKS cluster for self monitoring by sentinel."
   type        = bool
   default     = true
-  }
+}
 
 variable "kube_dashboard_enabled" {
   description = "This is to enable Kubernetes dashboard."
@@ -77,7 +77,7 @@ variable "node_name" {
   default     = "logstash-dev"
 }
 
-variable "vm_size {
+variable "vm_size" {
   description = "The size of virtual machine for each node."
   type        = string
   default     = "Standard_DS1_v2"
@@ -111,4 +111,3 @@ variable "node_pool_tags" {
   type        = map(string)
   default     = {}
 }
-

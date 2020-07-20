@@ -25,7 +25,6 @@ output "cluster_ca_certificate" {
   value = azurerm_kubernetes_cluster.K8s.kube_config.0.cluster_ca_certificate
 }
 
-output "id" {
-  description = "The Kubernetes Managed Cluster ID"
-  value       = azurerm_kubernetes_cluster.K8s.id
+output "host" {
+  value = azurerm_kubernetes_cluster.K8s.kube_config.0.host
 }

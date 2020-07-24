@@ -24,11 +24,6 @@ variable "dns_prefix" {
   type        = string
 }
 
-variable "kubernetes_version" {
-  description = "Version of Managed Kubernetes Cluster."
-  type        = string
-  default     = "1.16.10"
-}
 
 variable "private_cluster_enabled" {
   description = "This is to expose API server to internal IP addresses only."
@@ -51,18 +46,13 @@ variable "network_plugin" {
 variable "load_balancer_sku" {
   description = "This is the sku for load balancer used for Kubernetes Cluster."
   type        = string
-  default     = "Standard"
-}
-
-variable "log_analytics_workspace_id" {
-  description = "The ID of log analytics workspace for AKS self monitoring by Sentinel."
-  type        = string
+  default     = "standard"
 }
 
 variable "oms_agent_enabled" {
   description = "This is to enable oms agent on AKS cluster for self monitoring by sentinel."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "kube_dashboard_enabled" {
@@ -83,31 +73,8 @@ variable "vm_size" {
   default     = "Standard_DS1_v2"
 }
 
-variable "enable_auto_scaling" {
-  description = "This is to enable auto-scaling of nodes."
-  type        = bool
-  default     = false
-}
-
 variable "node_count" {
   description = "The number of nodes required to be deployed."
   type        = number
   default     = 3
-}
-
-variable "vnet_subnet_id" {
-  description = "The subnet id inside vnet where aks cluster is to be deployed."
-  type        = string
-}
-
-variable "os_disk_size_gb" {
-  description = "The size of os disk in gb."
-  type        = string
-  default     = "30"
-}
-
-variable "node_pool_tags" {
-  description = "A mapping of tags to assign to the nodes."
-  type        = map(string)
-  default     = {}
 }

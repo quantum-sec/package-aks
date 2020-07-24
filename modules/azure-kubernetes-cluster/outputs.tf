@@ -3,11 +3,6 @@ output "id" {
   value       = azurerm_kubernetes_cluster.K8s.id
 }
 
-output "private_fqdn" {
-  description = "The FQDN for the Kubernetes Cluster when private link has been enabled, which is only resolvable inside the Virtual Network used by the Kubernetes Cluster."
-  value       = azurerm_kubernetes_cluster.K8s.private_fqdn
-}
-
 output "kube_config" {
   description = "A kube_config block as defined below."
   value       = azurerm_kubernetes_cluster.K8s.kube_config_raw

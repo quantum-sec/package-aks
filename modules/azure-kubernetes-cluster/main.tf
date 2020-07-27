@@ -6,11 +6,6 @@ terraform {
   required_version = ">= 0.12"
 }
 
-provider "azurerm" {
-  version = ">= 2.00"
-  features {}
-}
-
 resource "azurerm_kubernetes_cluster" "K8s" {
   name                    = var.name
   location                = var.location

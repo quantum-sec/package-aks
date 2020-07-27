@@ -6,19 +6,19 @@ terraform {
   required_version = ">= 0.12"
 }
 
+provider "azurerm" {
+  version = ">= 2.00"
+  features {}
+}
+
 resource "azurerm_kubernetes_cluster" "K8s" {
   name                    = var.name
   location                = var.location
   resource_group_name     = var.resource_group_name
   tags                    = var.tags
+  kubernetes_version      = var.kubernetes_version
   private_cluster_enabled = var.private_cluster_enabled
   dns_prefix              = var.dns_prefix
-
-  default_node_pool {
-    name       = var.node_name
-    vm_size    = var.vm_size
-    node_count = var.node_count
-  }
 
   identity {
     type = var.identity_type
@@ -31,10 +31,21 @@ resource "azurerm_kubernetes_cluster" "K8s" {
 
   addon_profile {
     oms_agent {
-      enabled = var.oms_agent_enabled
+      enabled                    = var.oms_agent_enabled
+      log_analytics_workspace_id = var.log_analytics_workspace_id
     }
     kube_dashboard {
       enabled = var.kube_dashboard_enabled
     }
+  }
+
+  default_node_pool {
+    name                = var.node_name
+    vm_size             = var.vm_size
+    enable_auto_scaling = var.enable_auto_scaling
+    node_count          = var.node_count
+    vnet_subnet_id      = var.vnet_subnet_id
+    os_disk_size_gb     = var.os_disk_size_gb
+    tags                = var.node_pool_tags
   }
 }

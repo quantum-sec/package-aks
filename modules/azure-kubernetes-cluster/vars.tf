@@ -33,7 +33,7 @@ variable "kubernetes_version" {
 variable "private_cluster_enabled" {
   description = "This is to expose API server to internal IP addresses only."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "identity_type" {
@@ -74,13 +74,13 @@ variable "kube_dashboard_enabled" {
 variable "node_name" {
   description = "The name of node inside node pool."
   type        = string
-  default     = "logstash-dev"
+  default     = "logstash"
 }
 
 variable "vm_size" {
   description = "The size of virtual machine for each node."
   type        = string
-  default     = "Standard_DS1_v2"
+  default     = "Standard_DS2_v2"
 }
 
 variable "enable_auto_scaling" {
@@ -92,7 +92,7 @@ variable "enable_auto_scaling" {
 variable "node_count" {
   description = "The number of nodes required to be deployed."
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "vnet_subnet_id" {

@@ -5,6 +5,11 @@ output "id" {
 
 output "kube_config" {
   description = "A kube_config block as defined below."
+  value       = azurerm_kubernetes_cluster.K8s.kube_config
+}
+
+output "kube_config_raw" {
+  description = "A kube_config block as defined below."
   value       = azurerm_kubernetes_cluster.K8s.kube_config_raw
 }
 

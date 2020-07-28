@@ -15,8 +15,9 @@ resource "azurerm_kubernetes_cluster" "K8s" {
   private_cluster_enabled = var.private_cluster_enabled
   dns_prefix              = var.dns_prefix
 
-  identity {
-    type = var.identity_type
+  service_principal {
+    client_id     = var.client_id
+    client_secret = var.client_secret
   }
 
   network_profile {

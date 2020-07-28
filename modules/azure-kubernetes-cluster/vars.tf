@@ -42,6 +42,15 @@ variable "identity_type" {
   default     = "SystemAssigned"
 }
 
+variable "client_id" {
+  description = "This is the client id of azure AD application."
+  type        = string
+}
+
+variable "client_secret" {
+  description = "This is the client secret of azure AD application."
+}
+
 variable "network_plugin" {
   description = "Network plugin to use for networking."
   type        = string

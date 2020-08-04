@@ -1,6 +1,6 @@
 # package-aks
 
-This repository contains modules for deploying and managing Azure Kubernetes Cluster instance that are shared across other modules or instances.
+This repository contains modules for deploying and managing Azure Kubernetes Service (AKS) clusters and related resources.
 
 ## Using a Terraform Module
 

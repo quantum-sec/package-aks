@@ -6,7 +6,7 @@ terraform {
   required_version = ">= 0.12"
 }
 
-resource "azurerm_kubernetes_cluster" "K8s" {
+resource "azurerm_kubernetes_cluster" "cluster" {
   name                    = var.name
   location                = var.location
   resource_group_name     = var.resource_group_name
@@ -35,7 +35,7 @@ resource "azurerm_kubernetes_cluster" "K8s" {
   }
 
   default_node_pool {
-    name                = var.node_name
+    name                = var.node_pool_name
     vm_size             = var.vm_size
     enable_auto_scaling = var.enable_auto_scaling
     node_count          = var.node_count

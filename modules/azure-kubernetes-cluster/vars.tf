@@ -31,9 +31,9 @@ variable "kubernetes_version" {
 }
 
 variable "private_cluster_enabled" {
-  description = "This is to expose API server to internal IP addresses only."
+  description = "Whether or not the cluster is private. When in private mode, the API is exposed only to private addresses."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "identity_type" {
@@ -43,7 +43,7 @@ variable "identity_type" {
 }
 
 variable "network_plugin" {
-  description = "Network plugin to use for networking."
+  description = "The network plugin to use for networking."
   type        = string
   default     = "kubenet"
 }

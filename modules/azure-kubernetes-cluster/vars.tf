@@ -54,6 +54,12 @@ variable "load_balancer_sku" {
   default     = "Standard"
 }
 
+variable "load_balancer_public_ip_ids" {
+  description = "A set of IDs corresponding to the public IP addresses attached to the load balancer."
+  type        = set(string)
+  default     = []
+}
+
 variable "log_analytics_workspace_id" {
   description = "The ID of log analytics workspace to which AKS will output logs."
   type        = string

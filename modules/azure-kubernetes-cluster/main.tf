@@ -22,6 +22,10 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   network_profile {
     network_plugin    = var.network_plugin
     load_balancer_sku = var.load_balancer_sku
+
+    load_balancer_profile {
+      outbound_ip_address_ids = var.load_balancer_public_ip_ids
+    }
   }
 
   addon_profile {

@@ -1,6 +1,16 @@
 output "id" {
-  description = "The Kubernetes Managed Cluster ID."
+  description = "The Kubernetes managed cluster ID."
   value       = azurerm_kubernetes_cluster.cluster.id
+}
+
+output "fqdn" {
+  description = "The FQDN of the Kubernetes managed cluster."
+  value       = azurerm_kubernetes_cluster.cluster.fqdn
+}
+
+output "private_fqdn" {
+  description = "The FQDN for the Kubernetes cluster when private link has been enabled, which is only resolvable inside the virtual network used by the Kubernetes cluster."
+  value       = azurerm_kubernetes_cluster.cluster.private_fqdn
 }
 
 output "kube_config" {

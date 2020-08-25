@@ -43,3 +43,13 @@ output "host" {
   description = "The hostname used to access the Kubernetes cluster."
   value       = azurerm_kubernetes_cluster.cluster.kube_config.0.host
 }
+
+output "identity" {
+  description = "The managed identity used by master components."
+  value       = azurerm_kubernetes_cluster.cluster.identity
+}
+
+output "kubelet_identity" {
+  description = "The managed identity assigned to the Kubelets."
+  value       = azurerm_kubernetes_cluster.cluster.kubelet_identity
+}

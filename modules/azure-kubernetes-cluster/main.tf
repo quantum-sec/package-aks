@@ -10,7 +10,7 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   name                    = var.name
   location                = var.location
   resource_group_name     = var.resource_group_name
-  node_resource_group     = var.resource_group_name
+  node_resource_group     = "${var.resource_group_name}-cluster-resources"
   tags                    = var.tags
   kubernetes_version      = var.kubernetes_version
   private_cluster_enabled = var.private_cluster_enabled

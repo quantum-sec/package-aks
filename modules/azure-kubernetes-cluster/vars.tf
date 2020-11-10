@@ -42,10 +42,22 @@ variable "identity_type" {
   default     = "SystemAssigned"
 }
 
+variable "rbac_enabled" {
+  description = "Whether or not RBAC is enabled for this cluster."
+  type        = bool
+  default     = true
+}
+
 variable "network_plugin" {
   description = "The network plugin to use for networking."
   type        = string
   default     = "kubenet"
+}
+
+variable "network_policy" {
+  description = "The network policy to be used with Azure CNI (one of `calico` or `azure`)."
+  type        = string
+  default     = "calico"
 }
 
 variable "load_balancer_sku" {
@@ -116,4 +128,10 @@ variable "node_pool_tags" {
   description = "A mapping of tags to assign to the nodes."
   type        = map(string)
   default     = {}
+}
+
+variable "api_server_authorized_ip_ranges" {
+  description = "A list of IP networks in CIDR notation that are permitted to access the API of this cluster."
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
 }

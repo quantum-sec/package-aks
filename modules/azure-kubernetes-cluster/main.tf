@@ -20,8 +20,13 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     type = var.identity_type
   }
 
+  role_based_access_control {
+    enabled = var.rbac_enabled
+  }
+
   network_profile {
     network_plugin    = var.network_plugin
+    network_policy    = var.network_policy
     load_balancer_sku = var.load_balancer_sku
 
     load_balancer_profile {
@@ -48,4 +53,6 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     os_disk_size_gb     = var.os_disk_size_gb
     tags                = var.node_pool_tags
   }
+
+  api_server_authorized_ip_ranges = coalesce(concat(var.api_server_authorized_ip_ranges, ["0.0.0.0/0"])...)
 }

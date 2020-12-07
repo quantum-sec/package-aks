@@ -54,5 +54,5 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     tags                = var.node_pool_tags
   }
 
-  api_server_authorized_ip_ranges = toset(coalesce(concat(var.api_server_authorized_ip_ranges, ["0.0.0.0/0"])...))
+  api_server_authorized_ip_ranges = toset([coalesce(concat(var.api_server_authorized_ip_ranges, ["0.0.0.0/0"])...)])
 }

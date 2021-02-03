@@ -27,7 +27,7 @@ variable "dns_prefix" {
 variable "kubernetes_version" {
   description = "The Kubernetes version deployed in the cluster."
   type        = string
-  default     = "1.16.10"
+  default     = null
 }
 
 variable "private_cluster_enabled" {

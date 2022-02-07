@@ -72,12 +72,6 @@ variable "load_balancer_public_ip_ids" {
   default     = []
 }
 
-variable "public_load_balancer" {
-  description = "Whether or not the load balancer will be exposed to the public Internet."
-  type        = bool
-  default     = true
-}
-
 variable "log_analytics_workspace_id" {
   description = "The ID of log analytics workspace to which AKS will output logs."
   type        = string

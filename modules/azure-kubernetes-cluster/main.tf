@@ -29,8 +29,12 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     network_policy    = var.network_policy
     load_balancer_sku = var.load_balancer_sku
 
-    load_balancer_profile {
-      outbound_ip_address_ids = var.load_balancer_public_ip_ids
+    dynamic "load_balancer_profile" {
+      for_each = var.public_load_balancer ? [1] : []
+
+      content {
+        outbound_ip_address_ids = var.load_balancer_public_ip_ids
+      }
     }
   }
 

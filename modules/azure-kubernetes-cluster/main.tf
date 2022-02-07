@@ -30,7 +30,7 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     load_balancer_sku = var.load_balancer_sku
 
     dynamic "load_balancer_profile" {
-      for_each = length(load_balancer_public_ip_ids) > 0 ? [1] : []
+      for_each = length(var.load_balancer_public_ip_ids) > 0 ? [1] : []
 
       content {
         outbound_ip_address_ids = var.load_balancer_public_ip_ids

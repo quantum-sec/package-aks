@@ -16,11 +16,13 @@ output "private_fqdn" {
 output "kube_config" {
   description = "A kube_config block as defined below."
   value       = azurerm_kubernetes_cluster.cluster.kube_config
+  sensitive   = true
 }
 
 output "kube_config_raw" {
   description = "A kube_config block as defined below."
   value       = azurerm_kubernetes_cluster.cluster.kube_config_raw
+  sensitive   = true
 }
 
 output "client_key" {
@@ -32,16 +34,19 @@ output "client_key" {
 output "client_certificate" {
   description = "The client certificate used to access the Kubernetes cluster."
   value       = azurerm_kubernetes_cluster.cluster.kube_config.0.client_certificate
+  sensitive   = true
 }
 
 output "cluster_ca_certificate" {
   description = "The Kubernetes cluster's root CA certificate."
   value       = azurerm_kubernetes_cluster.cluster.kube_config.0.cluster_ca_certificate
+  sensitive   = true
 }
 
 output "host" {
   description = "The hostname used to access the Kubernetes cluster."
   value       = azurerm_kubernetes_cluster.cluster.kube_config.0.host
+  sensitive   = true
 }
 
 output "identity" {

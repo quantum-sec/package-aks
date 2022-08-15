@@ -7,21 +7,24 @@ terraform {
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" {
-  name                    = var.name
-  location                = var.location
-  resource_group_name     = var.resource_group_name
-  node_resource_group     = "${var.resource_group_name}-cluster-resources"
-  tags                    = var.tags
-  kubernetes_version      = var.kubernetes_version
-  private_cluster_enabled = var.private_cluster_enabled
-  dns_prefix              = var.dns_prefix
+  name                              = var.name
+  location                          = var.location
+  resource_group_name               = var.resource_group_name
+  node_resource_group               = "${var.resource_group_name}-cluster-resources"
+  tags                              = var.tags
+  kubernetes_version                = var.kubernetes_version
+  private_cluster_enabled           = var.private_cluster_enabled
+  dns_prefix                        = var.dns_prefix
+  role_based_access_control_enabled = var.rbac_enabled
 
   identity {
     type = var.identity_type
   }
 
-  role_based_access_control {
-    enabled = var.rbac_enabled
+  azure_active_directory_role_based_access_control { # tfsec:ignore:AZU007
+    admin_group_object_ids = var.rbac_aad_admin_group_object_ids
+    azure_rbac_enabled     = var.rbac_aad_azure_rbac_enabled
+    managed                = true
   }
 
   network_profile {
@@ -34,14 +37,8 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     }
   }
 
-  addon_profile {
-    oms_agent {
-      enabled                    = var.oms_agent_enabled
-      log_analytics_workspace_id = var.log_analytics_workspace_id
-    }
-    kube_dashboard {
-      enabled = var.kube_dashboard_enabled
-    }
+  oms_agent { # tfsec:ignore:AZU009
+    log_analytics_workspace_id = var.log_analytics_workspace_id
   }
 
   default_node_pool {

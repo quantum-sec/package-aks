@@ -63,7 +63,7 @@ variable "network_policy" {
 variable "load_balancer_sku" {
   description = "The SKU of the load balancer that will manage cluster traffic."
   type        = string
-  default     = "Standard"
+  default     = "standard"
 }
 
 variable "load_balancer_public_ip_ids" {
@@ -82,13 +82,6 @@ variable "oms_agent_enabled" {
   type        = bool
   default     = true
 }
-
-variable "kube_dashboard_enabled" {
-  description = "Whether or not the Kubernetes dashboard is enabled."
-  type        = bool
-  default     = true
-}
-
 variable "node_pool_name" {
   description = "The name of default node pool."
   type        = string
@@ -134,4 +127,16 @@ variable "api_server_authorized_ip_ranges" {
   description = "A list of IP networks in CIDR notation that are permitted to access the API of this cluster."
   type        = list(string)
   default     = ["0.0.0.0/0"]
+}
+
+variable "rbac_aad_admin_group_object_ids" {
+  description = "value"
+  type        = list(string)
+  default     = []
+}
+
+variable "rbac_aad_azure_rbac_enabled" {
+  description = "value"
+  type        = bool
+  default     = true
 }

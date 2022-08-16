@@ -6,7 +6,7 @@ terraform {
   required_version = ">= 0.12"
 }
 
-resource "azurerm_kubernetes_cluster" "cluster" {
+resource "azurerm_kubernetes_cluster" "cluster" { # tfsec:ignore:AZU007
   name                              = var.name
   location                          = var.location
   resource_group_name               = var.resource_group_name
@@ -15,17 +15,12 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   kubernetes_version                = var.kubernetes_version
   private_cluster_enabled           = var.private_cluster_enabled
   dns_prefix                        = var.dns_prefix
-  role_based_access_control_enabled = var.rbac_enabled
+  role_based_access_control_enabled = var.role_based_access_control_enabled
 
   identity {
     type = var.identity_type
   }
 
-  azure_active_directory_role_based_access_control { # tfsec:ignore:AZU007
-    admin_group_object_ids = var.rbac_aad_admin_group_object_ids
-    azure_rbac_enabled     = var.rbac_aad_azure_rbac_enabled
-    managed                = true
-  }
 
   network_profile {
     network_plugin    = var.network_plugin

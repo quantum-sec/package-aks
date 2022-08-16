@@ -42,7 +42,7 @@ variable "identity_type" {
   default     = "SystemAssigned"
 }
 
-variable "rbac_enabled" {
+variable "role_based_access_control_enabled" {
   description = "Whether or not RBAC is enabled for this cluster."
   type        = bool
   default     = true
@@ -127,16 +127,4 @@ variable "api_server_authorized_ip_ranges" {
   description = "A list of IP networks in CIDR notation that are permitted to access the API of this cluster."
   type        = list(string)
   default     = ["0.0.0.0/0"]
-}
-
-variable "rbac_aad_admin_group_object_ids" {
-  description = "value"
-  type        = list(string)
-  default     = []
-}
-
-variable "rbac_aad_azure_rbac_enabled" {
-  description = "value"
-  type        = bool
-  default     = true
 }

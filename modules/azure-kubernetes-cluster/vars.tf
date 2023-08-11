@@ -77,11 +77,6 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
-variable "oms_agent_enabled" {
-  description = "Whether or not the OMS Agent is enabled."
-  type        = bool
-  default     = true
-}
 variable "node_pool_name" {
   description = "The name of default node pool."
   type        = string

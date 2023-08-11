@@ -4,12 +4,13 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.18.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.69.0 |
 
 ## Modules
 
@@ -40,13 +41,10 @@ No modules.
 | <a name="input_node_count"></a> [node\_count](#input\_node\_count) | The number of nodes required to be deployed. | `number` | `1` | no |
 | <a name="input_node_pool_name"></a> [node\_pool\_name](#input\_node\_pool\_name) | The name of default node pool. | `string` | `"default"` | no |
 | <a name="input_node_pool_tags"></a> [node\_pool\_tags](#input\_node\_pool\_tags) | A mapping of tags to assign to the nodes. | `map(string)` | `{}` | no |
-| <a name="input_oms_agent_enabled"></a> [oms\_agent\_enabled](#input\_oms\_agent\_enabled) | Whether or not the OMS Agent is enabled. | `bool` | `true` | no |
 | <a name="input_os_disk_size_gb"></a> [os\_disk\_size\_gb](#input\_os\_disk\_size\_gb) | The size of the OS disk (in GB). | `string` | `"30"` | no |
 | <a name="input_private_cluster_enabled"></a> [private\_cluster\_enabled](#input\_private\_cluster\_enabled) | Whether or not the cluster is private. When in private mode, the API is exposed only to private addresses. | `bool` | `true` | no |
-| <a name="input_rbac_aad_admin_group_object_ids"></a> [rbac\_aad\_admin\_group\_object\_ids](#input\_rbac\_aad\_admin\_group\_object\_ids) | value | `list(string)` | `[]` | no |
-| <a name="input_rbac_aad_azure_rbac_enabled"></a> [rbac\_aad\_azure\_rbac\_enabled](#input\_rbac\_aad\_azure\_rbac\_enabled) | value | `bool` | `true` | no |
-| <a name="input_rbac_enabled"></a> [rbac\_enabled](#input\_rbac\_enabled) | Whether or not RBAC is enabled for this cluster. | `bool` | `true` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which this Kubernetes cluster will be provisioned. | `string` | n/a | yes |
+| <a name="input_role_based_access_control_enabled"></a> [role\_based\_access\_control\_enabled](#input\_role\_based\_access\_control\_enabled) | Whether or not RBAC is enabled for this cluster. | `bool` | `true` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the cluster. | `map(string)` | `{}` | no |
 | <a name="input_vm_size"></a> [vm\_size](#input\_vm\_size) | The virtual machine size of each cluster node. | `string` | `"Standard_DS2_v2"` | no |
 | <a name="input_vnet_subnet_id"></a> [vnet\_subnet\_id](#input\_vnet\_subnet\_id) | The ID of the subnet into which the Kubernetes cluster will be deployed. | `string` | n/a | yes |

@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 1.2"
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" { # tfsec:ignore:AZU007
